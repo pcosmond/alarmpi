@@ -40,7 +40,13 @@ input_value4 = GPIO.input(18)
 
 user="pcosmond@bigpond.com"    
 password="Peter2059" 
-smtp_server="smtp.gmail.com"  
+smtp_server="smtp.gmail.com"
+smtp_port= 587
+EMAIL_FROM= "PETERS TEST"
+# EMAIL_TO=["simulator@flighttrainingadelaide.com","pcosmond@bigpond.com"]
+EMAIL_SPACE=", "
+EMAIL_SUBJECT="Alarm Test"
+DATE_FORMAT= "%d/%m/%Y"  
 smtp_user="simulatorsmtp@gmail.com"    
 smtp_pass="simulator"    
 sendto1="simulator@flighttrainingadelaide.com"
@@ -120,6 +126,7 @@ def SendEmailAlert(warning):
     global EmailDelay
     global start_email_time
     from email.mime.text import MIMEText
+	from datetime import date
     RecordSet = True   
     if (elapsed_email_time > EmailDelay):
         start_email_time = time.time()    
@@ -127,10 +134,10 @@ def SendEmailAlert(warning):
             addr_to   = sendto1
             addr_from = smtp_user      
             msg = MIMEText(warning)
-            msg['To'] = addr_to 
-            msg['From'] = addr_from
-            msg['Subject'] = 'Alarm Notification' 
-            s = smtplib.SMTP(smtp_server,587)
+            msg['To'] = EMAIL_SPACE.join(addr_to) 
+            msg['From'] = EMAIL_FROM
+            msg['Subject'] = EMAIL_SUBJECT + " %s" %(date.today().strftime(DATE_FORMAT))
+            s = smtplib.SMTP(smtp_server, smtp_port)
             s.ehlo()
             s.starttls()
             s.ehlo
@@ -142,10 +149,10 @@ def SendEmailAlert(warning):
             addr_to   = sendto2
             addr_from = smtp_user    
             msg = MIMEText(warning)
-            msg['To'] = addr_to 
-            msg['From'] = addr_from
-            msg['Subject'] = 'Alarm Notification' 
-            s = smtplib.SMTP(smtp_server,587)
+            msg['To'] = EMAIL_SPACE.join(addr_to) 
+            msg['From'] = EMAIL_FROM
+            msg['Subject'] = EMAIL_SUBJECT + " %s" %(date.today().strftime(DATE_FORMAT))
+            s = smtplib.SMTP(smtp_server, smtp_port)
             s.ehlo()
             s.starttls()
             s.ehlo
