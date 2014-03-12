@@ -126,7 +126,7 @@ def SendEmailAlert(warning):
     global EmailDelay
     global start_email_time
     from email.mime.text import MIMEText
-	from datetime import date
+    from datetime import date
     RecordSet = True   
     if (elapsed_email_time > EmailDelay):
         start_email_time = time.time()    
