@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
 import urllib2
 import subprocess
-import emailtest
+from email.email import emailtest
 global user
 global password
 global AlarmActioned
