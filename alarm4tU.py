@@ -111,7 +111,7 @@ def GetTemperature():
     if TempDiff<3: SendEmailAlert(over_temp)
     if PrintToScreen: print TempDiff
     temp = round(temp,2)
-    return(temp);
+    return(temp)
   
 def SendEmailAlert(warning):
     import smtplib
@@ -152,7 +152,7 @@ def SendEmailAlert(warning):
         s.sendmail(addr_from, addr_to, msg.as_string())
         s.quit()
         if PrintToScreen: print msg;
-       
+        return(0)
 
 def PollRoutine():
     global start_time
@@ -169,13 +169,14 @@ def PollRoutine():
     if (elapsed_email_delay > EmailTimeDelay):
 		start_email_delay = time.time() 
 		SendEmailAlert(email_test)
-
+    return(0)
+    
 def NotifyHostTemperature():
     TempBuffer = []
     TempBuffer.append(GetTemperature())
     TempBuffer.append(0)
     rt=UpdateHost(14, TempBuffer)
-    return (0)
+    return(0)
     
 def NotifyHostGPIO(GPIOnumber):
     rt=UpdateHost(13,[GPIOnumber])
