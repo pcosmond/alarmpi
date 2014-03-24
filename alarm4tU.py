@@ -157,7 +157,7 @@ def SendEmailAlert(warning):
 def PollRoutine():
     global start_time
     global elapsed_time
-  	global start_email_delay
+    global start_email_delay
     global elapsed_email_delay
     global GPIOPollInterval 
     global EmailTimeDelay                
