@@ -105,7 +105,7 @@ def GetTemperatureEmail():    #Email sending triggers
     text = tfile.read()
     tfile.close()
     tfile = open(filename,'a')
-    text1 = tfile.write('Time Stamp =    ' + time.asctime() + '\n')
+    text1 = tfile.write('Time Stamp =    ' + time.asctime() + '\n')  # 3.5 added spaces
     text1 = tfile.write('Temp string = ' + text + '\n')
     eml = str(elapsed_email_delay)
     eml2 = str(elapsed_email_time)
