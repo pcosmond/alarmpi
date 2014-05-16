@@ -9,13 +9,13 @@ SMTP_PORT = 587
 SMTP_USER = "simulatorsmtp@gmail.com"
 SMTP_PASSWORD = "simulator"
 
-EMAIL_FROM = "FFTX Email"
+EMAIL_FROM = "Test Email"
 EMAIL_TO = ["simulator@flighttrainingadelaide.com", "pcosmond@bigpond.com"]
 EMAIL_SPACE = ", "
 EMAIL_SUBJECT = "Alarm Test : "
 DATE_FORMAT = "%d/%m/%Y"
 def send_email():         
-    msg = MIMEText ("Test Email from FFTX")
+    msg = MIMEText ("Test Email")
     msg['To'] = EMAIL_SPACE.join(EMAIL_TO)
     msg['From'] = EMAIL_FROM
     msg['Subject'] = EMAIL_SUBJECT + " %s" % (date.today().strftime(DATE_FORMAT))
